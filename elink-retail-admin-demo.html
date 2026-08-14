@@ -65,6 +65,22 @@
     .topbar{left:var(--side);transition:left .2s}.brand{position:fixed;left:0;top:0;z-index:36;width:var(--side);height:var(--topbar);background:#fff;border-right:1px solid var(--border);border-bottom:0}.sidebar{padding-top:14px;border-right-color:var(--border)}.sidebar-collapse-btn{position:absolute;top:15px;left:auto;right:14px;width:30px;height:30px;margin:0;border:1px solid transparent;border-radius:var(--radius);background:#fff;box-shadow:none;z-index:37;cursor:pointer}.sidebar-collapse-btn:hover{border-color:var(--border);background:var(--secondary)}.sidebar-collapse-btn svg{width:15px;height:15px}.app.sidebar-collapsed .topbar{left:72px}.app.sidebar-collapsed .brand>span:nth-child(2){display:none}.app.sidebar-collapsed .brand>.sidebar-collapse-btn{display:grid!important;top:46px;left:auto;right:-14px;margin:0;border-color:var(--border);border-radius:50%;box-shadow:var(--shadow-sm)}.app.sidebar-collapsed .brand{justify-content:center}.app.sidebar-collapsed .brand-mark{margin-right:0}
     @media(max-width:767px){.topbar,.app.sidebar-collapsed .topbar{left:0}.brand,.app.sidebar-collapsed .brand{position:static;width:auto;min-width:52px;padding:0 8px;border:0;justify-content:flex-start}.brand>span:nth-child(2),.app.sidebar-collapsed .brand>span:nth-child(2){display:none}.brand-mark,.app.sidebar-collapsed .brand-mark{margin-right:8px}.sidebar,.app.sidebar-collapsed .sidebar{padding-top:14px}.sidebar-collapse-btn,.app.sidebar-collapsed .brand>.sidebar-collapse-btn{display:none!important}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+    /* Generic list filters: keep actions on their own row so fields never compress buttons. */
+    .generic-page .filters{grid-template-columns:repeat(var(--filter-count),minmax(0,1fr))}
+    .generic-page .filter-actions{grid-column:1/-1;justify-content:flex-end;flex-wrap:nowrap;width:100%}
+    .generic-page .filter-actions .primary{min-width:72px;flex:0 0 auto;white-space:nowrap}
+    .generic-page .filter-actions .ghost{min-width:120px;flex:0 0 auto;white-space:nowrap}
+    @media(max-width:1300px){
+      .generic-page .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:680px){
+      .generic-page .filters{grid-template-columns:minmax(0,1fr)}
+      .generic-page .filter-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .generic-page .filter-actions .primary,.generic-page .filter-actions .ghost{width:100%;min-width:0}
+    }
+    @media(max-width:420px){
+      .generic-page .filter-actions{grid-template-columns:minmax(0,1fr)}
+    }
   </style>
 </head>
 <body>
