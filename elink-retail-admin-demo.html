@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" data-design-system="elink-retail" data-responsive-model="desktop-compact-mobile">
+<html lang="zh-CN" data-design-system="elink-retail" data-responsive-model="desktop-compact-mobile" data-density="compact">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -107,6 +107,106 @@
     @media(max-width:1100px){.live-create-grid{grid-template-columns:minmax(0,1fr) 240px}.live-choice-grid{grid-template-columns:1fr}.live-upload-row{grid-template-columns:1fr 1fr}.live-create-main .live-row{grid-template-columns:150px minmax(0,1fr)}}
     @media(max-width:900px){.live-create-grid{grid-template-columns:1fr}.live-summary{position:static;order:-1}.live-summary-card{display:grid;grid-template-columns:1fr 2fr;gap:16px}.live-summary h3{margin:0}.live-step-nav{overflow-x:auto;grid-template-columns:repeat(5,minmax(150px,1fr));padding:0}.live-step-link{white-space:nowrap}}
     @media(max-width:680px){.live-create-main .live-row{grid-template-columns:1fr;gap:8px}.live-choice-grid,.live-upload-row{grid-template-columns:1fr}.live-summary-card{display:block}.live-step-nav{grid-template-columns:repeat(5,minmax(132px,1fr))}.live-submit-bar{margin-left:-12px;margin-right:-12px;border-radius:0;border-left:0;border-right:0}.live-submit-bar .muted{display:none}.live-submit-bar button{flex:1}.live-counter{display:block}.char-count{text-align:left;padding-top:5px}}
+    /* Compact operator density: tighter desktop rhythm without shrinking mobile touch targets. */
+    html[data-density="compact"] body{font-size:13px;line-height:1.45}
+    html[data-density="compact"] .content{padding:16px 20px 36px}
+    html[data-density="compact"] .welcome{margin-bottom:14px}
+    html[data-density="compact"] .welcome h1,html[data-density="compact"] .products-page-head h1{font-size:20px;line-height:1.3;margin-bottom:2px}
+    html[data-density="compact"] .welcome p,html[data-density="compact"] .products-page-head p{font-size:12px}
+    html[data-density="compact"] .grid{gap:12px}
+    html[data-density="compact"] .panel{margin-bottom:12px;border-radius:6px}
+    html[data-density="compact"] .panel-head{min-height:44px;padding:6px 14px;gap:8px}
+    html[data-density="compact"] .panel-head h2{font-size:14px}
+    html[data-density="compact"] .panel-head .sub,html[data-density="compact"] .muted,html[data-density="compact"] .filter-block label{font-size:11px}
+    html[data-density="compact"] .icon-btn,html[data-density="compact"] .ghost,html[data-density="compact"] .primary{height:32px;padding-inline:11px;gap:6px}
+    html[data-density="compact"] .icon-btn{width:32px;padding:0}
+    html[data-density="compact"] .field{height:32px;padding-inline:9px}
+    html[data-density="compact"] .nav-section{margin:2px 0}
+    html[data-density="compact"] .nav-parent{min-height:36px;padding:5px 9px}
+    html[data-density="compact"] .nav-item{min-height:32px;padding:5px 10px 5px 40px}
+    html[data-density="compact"] .tabs{gap:18px;padding-inline:14px}
+    html[data-density="compact"] .tab{min-height:38px;padding:6px 0;font-size:12px}
+    html[data-density="compact"] .filters,html[data-density="compact"] .filter-grid{padding:12px 14px;gap:9px;border-bottom-width:8px}
+    html[data-density="compact"] .filter-actions{min-height:32px;gap:6px}
+    html[data-density="compact"] .table-tools{padding:8px 14px;gap:7px}
+    html[data-density="compact"] th{height:36px;padding:0 12px;font-size:11px}
+    html[data-density="compact"] td{padding:10px 12px}
+    html[data-density="compact"] .thumb{width:40px;height:40px;font-size:18px}
+    html[data-density="compact"] .product{gap:9px}
+    html[data-density="compact"] .status{padding:1px 7px;font-size:11px;white-space:nowrap}
+    html[data-density="compact"] .todo{padding:6px}
+    html[data-density="compact"] .todo-item{padding:10px 6px}
+    html[data-density="compact"] .todo-num,html[data-density="compact"] .metric-value{font-size:20px}
+    html[data-density="compact"] .todo-label,html[data-density="compact"] .metric-label,html[data-density="compact"] .up{font-size:11px}
+    html[data-density="compact"] .metric-row{padding:14px}
+    html[data-density="compact"] .metric{padding-inline:12px}
+    html[data-density="compact"] .metric-value{margin:3px 0}
+    html[data-density="compact"] .chart{height:148px;padding:14px;gap:10px;background-size:100% 30px}
+    html[data-density="compact"] .notice-list{padding:6px 14px}
+    html[data-density="compact"] .notice{padding:8px 0}
+    html[data-density="compact"] .quick{gap:6px;padding:10px}
+    html[data-density="compact"] .quick button{height:58px;padding:9px}
+    html[data-density="compact"] .pagination{padding:10px 14px;gap:6px}
+    html[data-density="compact"] .page-no{width:28px;height:28px}
+    html[data-density="compact"] .module-grid,html[data-density="compact"] .channel-grid{gap:10px}
+    html[data-density="compact"] .module-card{min-height:130px;padding:16px}
+    html[data-density="compact"] .module-card h3{margin:8px 0 4px;font-size:14px}
+    html[data-density="compact"] .choice-row{gap:10px;padding:12px 14px}
+    html[data-density="compact"] .choice-card{padding:13px}
+    html[data-density="compact"] .choice-card h3{font-size:14px}
+    html[data-density="compact"] .settings-layout{gap:12px}
+    html[data-density="compact"] .settings-menu button{height:36px;padding-inline:10px}
+    html[data-density="compact"] .form{padding:16px}
+    html[data-density="compact"] .form-row{gap:14px;padding:12px 0}
+    html[data-density="compact"] .setting-list{padding:14px}
+    html[data-density="compact"] .setting-section+.setting-section{margin-top:16px}
+    html[data-density="compact"] .setting-group{min-height:40px;padding-inline:12px}
+    html[data-density="compact"] .setting-group strong{font-size:14px}
+    html[data-density="compact"] .setting-row{gap:14px;padding:11px 12px}
+    html[data-density="compact"] .generic-section-nav{padding:10px 14px 8px}
+    html[data-density="compact"] .generic-section-button{height:32px;padding-inline:12px;font-size:12px}
+    html[data-density="compact"] .global-search-trigger{height:32px}
+    html[data-density="compact"] .page-alert{margin-bottom:12px;padding:8px 10px;font-size:12px}
+    html[data-density="compact"] .app-center-shell{padding:16px}
+    html[data-density="compact"] .app-center-heading{margin-bottom:12px}
+    html[data-density="compact"] .app-center-card{min-height:184px;padding:15px}
+    html[data-density="compact"] .app-center-card-head{margin-bottom:12px}
+    html[data-density="compact"] .app-manage-row{min-height:70px;padding:11px 14px}
+    html[data-density="compact"] .event-table-head{min-height:44px;padding-inline:14px}
+    html[data-density="compact"] .live-step-nav{margin-bottom:12px}
+    html[data-density="compact"] .live-step-link{min-height:46px}
+    html[data-density="compact"] .live-create-main .live-section{margin-bottom:10px}
+    html[data-density="compact"] .live-create-main .live-section-head{padding:14px 16px}
+    html[data-density="compact"] .live-create-main .live-form{padding:2px 16px 8px}
+    html[data-density="compact"] .live-create-main .live-row{padding:13px 0}
+    html[data-density="compact"] .live-choice{min-height:66px;padding:10px}
+    html[data-density="compact"] .live-upload-tile{min-height:108px;padding:12px}
+    html[data-density="compact"] .live-summary-card{padding:14px}
+    html[data-density="compact"] .live-summary-list{gap:9px}
+    html[data-density="compact"] .live-submit-bar{padding:9px 12px;margin-top:10px}
+    html[data-density="compact"] .scrm-brand{height:60px;font-size:16px}
+    html[data-density="compact"] .scrm-nav button{height:36px}
+    html[data-density="compact"] .scrm-inbox{padding:12px 8px 12px 12px}
+    html[data-density="compact"] .scrm-channel{height:44px}
+    html[data-density="compact"] .scrm-mode{height:48px}
+    html[data-density="compact"] .scrm-conversation{padding:9px 12px}
+    html[data-density="compact"] .scrm-chat{margin:12px 12px 12px 0}
+    html[data-density="compact"] .scrm-chat-head{height:52px;padding-inline:16px}
+    @media(max-width:767px){
+      html[data-density="compact"] .content{padding:14px 12px 28px}
+      html[data-density="compact"] .welcome{margin-bottom:12px}
+      html[data-density="compact"] .welcome h1,html[data-density="compact"] .products-page-head h1{font-size:19px}
+      html[data-density="compact"] .nav-parent,html[data-density="compact"] .nav-item{min-height:44px}
+      html[data-density="compact"] .icon-btn,html[data-density="compact"] .ghost,html[data-density="compact"] .primary,html[data-density="compact"] .field{min-height:40px}
+      html[data-density="compact"] .icon-btn{width:40px}
+      html[data-density="compact"] .tab{min-height:44px}
+      html[data-density="compact"] .panel-head{min-height:48px;padding-inline:12px}
+      html[data-density="compact"] .filters,html[data-density="compact"] .filter-grid{padding:12px}
+      html[data-density="compact"] td{padding:11px 12px}
+      html[data-density="compact"] .app-center-shell{padding:12px}
+      html[data-density="compact"] .app-center-card{min-height:0;padding:14px}
+      html[data-density="compact"] .scrm-nav button{height:44px}
+    }
   </style>
 </head>
 <body>
