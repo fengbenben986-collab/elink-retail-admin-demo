@@ -1212,5 +1212,117 @@
     refreshFilterCopy();normalizeFilterPlaceholders();
   })();
 </script>
+<style>
+  /* Shipment filters — shadcn FieldGroup / InputGroup composition for the static demo. */
+  #shipping .shipping-main-filter-grid{
+    display:block;
+    padding:16px 18px 14px;
+    background:var(--filter-surface,#fbfcfd);
+  }
+  #shipping .shipping-filter-columns{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:24px;
+    align-items:start;
+  }
+  #shipping .shipping-filter-column{
+    display:flex;
+    min-width:0;
+    flex-direction:column;
+    gap:14px;
+  }
+  #shipping .shipping-main-filter-grid .filter-block{
+    display:flex;
+    min-width:0;
+    flex-direction:column;
+    gap:6px;
+  }
+  #shipping .shipping-main-filter-grid .filter-block label{
+    min-height:auto;
+    color:var(--foreground,#17202a);
+    font-size:12px;
+    font-weight:650;
+    line-height:18px;
+  }
+  #shipping .shipping-main-filter-grid .shipping-field-combo{
+    display:grid;
+    grid-template-columns:minmax(132px,180px) minmax(0,1fr);
+    gap:8px;
+  }
+  #shipping .shipping-main-filter-grid .shipping-field-combo select{
+    width:100%;
+    max-width:none;
+  }
+  #shipping .shipping-main-filter-grid .shipping-date-range{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+    gap:8px;
+  }
+  #shipping .shipping-main-filter-grid .shipping-periods{
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
+    margin-top:2px;
+  }
+  #shipping .shipping-main-filter-grid .shipping-period{
+    min-height:30px;
+    padding:4px 8px;
+    border-radius:5px;
+    color:#475467;
+    font-size:12px;
+  }
+  #shipping .shipping-main-filter-grid .shipping-period:hover,
+  #shipping .shipping-main-filter-grid .shipping-period.active{
+    background:#eef4ff;
+    color:#175cd3;
+  }
+  #shipping .shipping-main-filter-grid .filter-actions{
+    display:flex;
+    width:100%;
+    min-height:auto;
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px solid var(--border,#e5e7eb);
+    align-items:center;
+    gap:8px;
+  }
+  #shipping .shipping-main-filter-grid .filter-actions .primary{min-width:72px}
+  #shipping .shipping-main-filter-grid .filter-active-summary{margin-left:auto}
+  #shipping .shipping-alert{margin-top:14px}
+  @media(max-width:960px){
+    #shipping .shipping-filter-columns{grid-template-columns:1fr;gap:14px}
+    #shipping .shipping-filter-column{gap:14px}
+  }
+  @media(max-width:560px){
+    #shipping .shipping-main-filter-grid{padding:14px}
+    #shipping .shipping-main-filter-grid .shipping-field-combo,
+    #shipping .shipping-main-filter-grid .shipping-date-range{grid-template-columns:1fr}
+    #shipping .shipping-main-filter-grid .shipping-date-range>span{display:none}
+    #shipping .shipping-main-filter-grid .filter-actions{flex-wrap:wrap}
+    #shipping .shipping-main-filter-grid .filter-actions button{flex:1 1 120px}
+    #shipping .shipping-main-filter-grid .filter-active-summary{width:100%;margin-left:0}
+  }
+</style>
+<script>
+  (()=>{
+    const grid=document.querySelector('#shipping .shipping-filter-card .filter-grid');
+    if(!grid||grid.classList.contains('shipping-main-filter-grid'))return;
+    const fields=[...grid.querySelectorAll(':scope>.filter-block')];
+    const actions=grid.querySelector(':scope>.filter-actions');
+    if(fields.length<4||!actions)return;
+    grid.classList.add('shipping-main-filter-grid');
+    const columns=document.createElement('div');
+    columns.className='shipping-filter-columns';
+    const left=document.createElement('div'),right=document.createElement('div');
+    left.className=right.className='shipping-filter-column';
+    left.setAttribute('role','group');right.setAttribute('role','group');
+    left.setAttribute('aria-label',fields[0].querySelector('label')?.textContent.trim()||'Order search');
+    right.setAttribute('aria-label',fields[1].querySelector('label')?.textContent.trim()||'Order time');
+    left.append(fields[0],fields[2]);
+    right.append(fields[1],fields[3]);
+    columns.append(left,right);
+    grid.insertBefore(columns,actions);
+  })();
+</script>
 </body>
 </html>
