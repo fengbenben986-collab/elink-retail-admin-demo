@@ -993,5 +993,68 @@
     applyLanguage(currentLanguage);
   })();
 </script>
+<style>
+  /* Unified shadcn-style order workspace: one surface, one TabsList, one density system. */
+  #orders>.welcome,#shipping>.welcome,#aftersales>.welcome{margin-bottom:16px}
+  #orders>.welcome h1,#shipping>.welcome h1,#aftersales>.welcome h1{font-size:22px;line-height:1.35;letter-spacing:-.02em}
+  .order-workspace{overflow:hidden;border:1px solid var(--border);border-radius:10px;background:var(--card);box-shadow:0 2px 8px rgb(16 24 40 / .04)}
+  .order-tabs{display:flex!important;align-items:center;gap:24px;min-height:48px;margin:0;padding:0 18px;border:0;border-bottom:1px solid var(--border);border-radius:0;background:var(--card);overflow-x:auto}
+  .order-tabs .tab,.order-tabs .after-capability-tab{min-height:48px;padding:8px 0;color:var(--muted-foreground);font-size:13px;font-weight:600}
+  .order-tabs .tab.active,.order-tabs .after-capability-tab.active{color:var(--primary)}
+  .order-tabs .tab.active:after,.order-tabs .after-capability-tab.active:after{height:2px;background:var(--primary)}
+  .order-workspace .shipping-panel,.order-workspace .after-capability-view{background:var(--card)}
+  .order-workspace .after-capability-view>.panel{margin:0;border:0;border-radius:0;box-shadow:none}
+  .order-workspace .after-capability-view>.panel+.panel{border-top:8px solid var(--background)}
+  .order-workspace .shipping-alert,.order-workspace .info-strip{margin:16px 18px 0;border:1px solid #b9d4ff;border-radius:8px;background:#f4f8ff;color:#245b9f;box-shadow:none}
+  .order-workspace .shipping-alert{min-height:50px;padding:11px 13px}
+  .order-workspace .info-strip{padding:12px 14px}
+  .order-workspace .shipping-filter-card{margin:0;border:0;border-radius:0;background:var(--card)}
+  .order-workspace .shipping-filter-card .filter-grid,.order-workspace .after-capability-view .filter-grid{padding:18px;border-bottom:8px solid var(--background)}
+  .order-workspace .filter-grid{gap:12px 14px}
+  .order-workspace .filter-block{gap:6px}
+  .order-workspace .filter-block label{color:var(--foreground);font-size:12px;font-weight:600}
+  .order-workspace .field{border-color:var(--input);border-radius:6px;background:var(--background)}
+  .order-workspace .filter-actions{gap:8px;padding-top:2px}
+  .order-workspace .filter-actions .primary{min-width:64px}
+  .order-workspace .shipping-table-head,.order-workspace .table-tools{min-height:52px;padding:9px 18px;border-top:0;border-bottom:1px solid var(--border);background:var(--card)}
+  .order-workspace .shipping-status-tabs{border:1px solid var(--border);border-radius:7px;background:var(--muted)}
+  .order-workspace .shipping-status-option{border-radius:5px}
+  .order-workspace .shipping-status-option.active{color:var(--primary);box-shadow:0 1px 3px rgb(16 24 40 / .08)}
+  .order-workspace table{font-variant-numeric:tabular-nums}
+  .order-workspace th{height:42px;background:#fafbfc;color:#475467;font-weight:650}
+  .order-workspace td{padding:12px}
+  .order-workspace tbody tr:not(.shipping-order-row):hover td{background:#fbfdff}
+  .order-workspace .shipping-order-row td{background:#f7f9fb}
+  .order-workspace .pagination{border-top:1px solid var(--border)}
+  .order-workspace button:focus-visible,.order-workspace input:focus-visible,.order-workspace select:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+  .order-workspace .rule-grid{grid-template-columns:repeat(3,minmax(0,1fr));padding:18px}
+  .order-workspace .rule-card{border-radius:8px}
+  @media(max-width:900px){.order-workspace .rule-grid{grid-template-columns:1fr}.order-tabs{gap:20px}}
+  @media(max-width:680px){#orders>.welcome h1,#shipping>.welcome h1,#aftersales>.welcome h1{font-size:20px}.order-tabs{padding-inline:14px}.order-workspace .shipping-alert,.order-workspace .info-strip{margin:12px 12px 0}.order-workspace .shipping-filter-card .filter-grid,.order-workspace .after-capability-view .filter-grid{padding:14px}.order-workspace .shipping-table-head,.order-workspace .table-tools{padding-inline:14px}}
+</style>
+<script>
+  (()=>{
+    document.querySelector('#orders>.panel')?.classList.add('order-workspace');
+    const shipping=document.getElementById('shipping'),shippingShell=shipping?.querySelector('.shipping-center');
+    shipping?.querySelector('.shipping-page-heading')?.remove();
+    shipping?.querySelector('.shipping-kpi-row')?.remove();
+    shipping?.querySelectorAll('.shipping-section-title').forEach(title=>{if(title.closest('.shipping-filter-card')&&!title.closest('.shipping-guide'))title.remove()});
+    if(shippingShell){shippingShell.classList.add('order-workspace');shippingShell.querySelector('.shipping-tabs')?.classList.add('order-tabs')}
+
+    const after=document.getElementById('aftersales'),afterTabs=after?.querySelector('.after-capability-tabs');
+    if(after&&afterTabs&&!after.querySelector(':scope>.order-workspace')){
+      const shell=document.createElement('div');shell.className='panel order-workspace';
+      afterTabs.insertAdjacentElement('beforebegin',shell);
+      afterTabs.classList.remove('panel','after-capability-tabs');afterTabs.classList.add('tabs','order-tabs');
+      shell.appendChild(afterTabs);
+      after.querySelectorAll(':scope>.after-capability-view').forEach(view=>shell.appendChild(view));
+    }
+    after?.querySelectorAll('.after-capability-view>.info-strip').forEach(alert=>alert.classList.remove('after-helper-summary'));
+    Object.assign(languageTerms.en,{'商家需在售后发起 7 天内处理，逾期未处理时系统将自动同意申请并退款给用户。':'Merchants must respond within 7 days. Unhandled requests are automatically approved and refunded.','售后单号':'After-sales Case No.','待处理':'Pending','售后成功':'Resolved','门店已审核':'Store Reviewed','用户申请':'Customer Request','商家主动退款':'Merchant Refund','系统自动退款':'Automatic Refund','团队申请':'Team Request','称重不足退差价':'Weight Difference Refund','已收货':'Received','无需发货':'No Shipment Required','清空所有筛选项':'Clear All Filters','已选 0 条':'0 selected','商品金额':'Product Amount','退款金额':'Refund Amount','退货数量':'Return Quantity','退款时间':'Refunded At','超时时间':'Deadline','课程':'Course','备注详情':'View Notes'});
+    Object.assign(languageTerms.ms,{'商家需在售后发起 7 天内处理，逾期未处理时系统将自动同意申请并退款给用户。':'Peniaga mesti bertindak dalam 7 hari. Permintaan yang tidak diproses akan diluluskan dan dibayar balik secara automatik.','售后单号':'No. Kes Selepas Jualan','待处理':'Menunggu Tindakan','售后成功':'Selesai','门店已审核':'Disemak Kedai','用户申请':'Permintaan Pelanggan','商家主动退款':'Bayaran Balik Peniaga','系统自动退款':'Bayaran Balik Automatik','团队申请':'Permintaan Pasukan','称重不足退差价':'Bayaran Balik Perbezaan Berat','已收货':'Diterima','无需发货':'Tiada Penghantaran','清空所有筛选项':'Kosongkan Semua Penapis','已选 0 条':'0 dipilih','商品金额':'Jumlah Produk','退款金额':'Jumlah Bayaran Balik','退货数量':'Kuantiti Dipulangkan','退款时间':'Masa Bayaran Balik','超时时间':'Tarikh Akhir','课程':'Kursus','备注详情':'Lihat Nota'});
+    document.querySelectorAll('.nav-section').forEach(section=>{section.classList.add('collapsed');section.querySelector('.nav-parent')?.setAttribute('aria-expanded','false')});
+    applyLanguage(currentLanguage);
+  })();
+</script>
 </body>
 </html>
