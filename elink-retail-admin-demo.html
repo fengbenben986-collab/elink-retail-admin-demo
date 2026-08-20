@@ -927,5 +927,71 @@
     applyLanguage(currentLanguage);
   })();
 </script>
+<style>
+  #shipping .shipping-tabs{display:flex}
+  .after-capability-tabs{display:flex;gap:22px;padding:0 18px;border-bottom:1px solid var(--line);background:#fff;overflow-x:auto}
+  .after-capability-tab{min-height:44px;border:0;background:transparent;color:#475467;position:relative;padding:8px 0;white-space:nowrap}
+  .after-capability-tab.active{color:var(--brand2);font-weight:650}
+  .after-capability-tab.active:after{content:"";position:absolute;inset:auto 0 0;height:2px;background:var(--brand)}
+  .after-capability-view[hidden]{display:none!important}
+  .after-capability-view>.panel:first-child{border-top:0;border-radius:0 0 7px 7px}
+  .after-helper-summary{margin:16px 18px 0}
+  @media(max-width:680px){.after-capability-tabs{padding-inline:14px;gap:20px}}
+</style>
+<script>
+  /* User-confirmed retail order information architecture. */
+  (()=>{
+    const orderSection=document.querySelector('.nav-item[data-page="orders"]')?.closest('.nav-section');
+    const settingsSection=document.querySelector('.nav-item[data-page="settings"]')?.closest('.nav-section');
+    if(!orderSection||!settingsSection)return;
+    const parent=orderSection.querySelector('.nav-parent'),label=parent.querySelector('.nav-label');
+    if(label){label.textContent='订单';label._zhText='订单'}
+    parent['_zharia-label']='订单';parent._zhtitle='订单';parent.setAttribute('aria-label','订单');parent.title='订单';
+    orderSection.querySelectorAll('.nav-group-label').forEach(el=>el.remove());
+
+    const nav=page=>document.querySelector('.nav-item[data-page="'+page+'"]');
+    ['orders','shipping','aftersales','verifyTool','reviews'].forEach(page=>{const el=nav(page);if(el)orderSection.appendChild(el)});
+    ['bulkShipping','refunds','afterHelper'].forEach(page=>nav(page)?.remove());
+
+    const settingsAnchor=nav('taxSettings')||nav('settings');
+    [['payments','收款渠道'],['tradeSettings','交易设置'],['logistics','物流设置']].forEach(([page,text])=>{const el=nav(page);if(!el)return;el.textContent=text;el.firstChild._zhText=text;settingsSection.insertBefore(el,settingsAnchor)});
+    titles.payments='收款渠道';titles.logistics='物流设置';
+
+    const shippingPage=document.getElementById('shipping'),shippingCenter=shippingPage?.querySelector('.shipping-center');
+    const shipmentPanel=document.getElementById('shippingShipmentPanel'),batchPanel=document.getElementById('shippingBatchPanel'),bulkPage=document.getElementById('bulkShipping');
+    if(shipmentPanel){shipmentPanel.dataset.shippingPanel='shipment';shipmentPanel.hidden=false}
+    if(batchPanel){batchPanel.dataset.shippingPanel='batch';batchPanel.hidden=true;shippingCenter?.appendChild(batchPanel)}
+    if(shippingCenter&&!shippingCenter.querySelector('.shipping-tabs'))shippingCenter.insertAdjacentHTML('afterbegin','<div class="tabs shipping-tabs" role="tablist" aria-label="发货中心"><button class="tab active" id="shippingShipmentTab" type="button" role="tab" aria-selected="true" aria-controls="shippingShipmentPanel" data-shipping-tab="shipment">打单发货</button><button class="tab" id="shippingBatchTab" type="button" role="tab" aria-selected="false" aria-controls="shippingBatchPanel" data-shipping-tab="batch">批量发货</button></div>');
+    shippingCenter?.querySelectorAll('[data-shipping-tab]').forEach(button=>{button.onclick=event=>{event.stopPropagation();setShippingTab(button.dataset.shippingTab)}});
+    bulkPage?.remove();dedicated.delete('bulkShipping');
+    document.querySelectorAll('[data-page="bulkShipping"]').forEach(trigger=>{trigger.dataset.page='shipping';trigger.dataset.shippingOpen='batch';trigger.onclick=event=>{event.stopPropagation();showPage('shipping');setShippingTab('batch')}});
+    setShippingTab('shipment');
+
+    let afterPage=document.getElementById('aftersales');
+    if(!afterPage){
+      afterPage=document.createElement('section');afterPage.className='page';afterPage.id='aftersales';
+      afterPage.innerHTML='<div class="welcome"><div><h1>售后维权</h1><p>处理退款、退货和售后申请。</p></div></div><div class="info-strip">商家需在售后发起 7 天内处理，逾期未处理时系统将自动同意申请并退款给用户。</div><div class="panel"><div class="filter-grid"><div class="filter-block"><label>订单搜索</label><div class="shipping-field-combo"><select class="field"><option>交易单号</option><option>订单号</option><option>售后单号</option><option>商户单号</option><option>买家昵称</option><option>买家手机号</option><option>收货人姓名</option><option>收货人手机号</option><option>用户ID</option></select><input class="field" placeholder="请输入完整交易单号"></div></div><div class="filter-block"><label>售后时间</label><div class="shipping-date-range"><input class="field" type="date" aria-label="开始日期"><span>至</span><input class="field" type="date" aria-label="结束日期"></div></div><div class="filter-block"><label>商品名称</label><input class="field" placeholder="请输入商品名称"></div><div class="filter-block"><label>售后状态</label><select class="field"><option>全部</option><option>待处理</option><option>售后中</option><option>售后成功</option><option>售后关闭</option><option>门店已审核</option></select></div><div class="filter-block"><label>售后类型</label><select class="field"><option>全部</option><option>用户申请</option><option>商家主动退款</option><option>系统自动退款</option><option>团队申请</option><option>称重不足退差价</option></select></div><div class="filter-block"><label>售后方式</label><select class="field"><option>全部</option><option>仅退款</option><option>退货退款</option></select></div><div class="filter-block"><label>发货状态</label><select class="field"><option>全部</option><option>待发货</option><option>已发货</option><option>已收货</option><option>无需发货</option></select></div><div class="filter-block"><label>所属门店</label><input class="field" placeholder="请选择门店"></div><div class="filter-actions"><button class="primary" type="button">筛选</button><button class="ghost" type="button">导出</button><button class="ghost" type="button">查看已导出售后单</button><button class="ghost" type="button">清空所有筛选项</button></div></div><div class="table-tools"><strong>已选 0 条</strong><button class="ghost" type="button" disabled>批量处理仅退款申请</button></div><div class="table-wrap"><table><thead><tr><th><input class="check" type="checkbox" aria-label="选择全部售后单"></th><th>商品名称</th><th>发货状态</th><th>商品金额</th><th>退款金额</th><th>退货数量</th><th>申请时间</th><th>退款时间</th><th>超时时间</th><th>售后状态</th><th>所属门店</th><th>操作</th></tr></thead><tbody><tr class="shipping-order-row"><td colspan="12">订单号：<b>o_1785133556_6a66f9f442d8f_950504V2</b>　售后单号：A1785135630_205339VcEXVFN_55823126　售后类型：商家主动退款</td></tr><tr><td><input class="check" type="checkbox" disabled></td><td><div class="product"><div class="thumb">◆</div><div><b>本本测试222</b><div class="muted">课程</div></div></div></td><td>无需发货</td><td>US$2.00</td><td>US$2.00</td><td>--</td><td>2026-07-27 15:00</td><td>2026-07-27 15:00</td><td>2026-08-03 15:00</td><td><span class="status">售后成功</span></td><td>--</td><td><button class="action" type="button">备注详情</button></td></tr></tbody></table></div><div class="pagination"><span>共 1 条</span><button class="page-no active" type="button">1</button></div></div>';
+      document.getElementById('genericPage').insertAdjacentElement('beforebegin',afterPage);
+    }
+    if(afterPage&&!afterPage.querySelector('.after-capability-tabs')){
+      const welcome=afterPage.querySelector(':scope>.welcome');
+      const caseView=document.createElement('section');caseView.className='after-capability-view';caseView.dataset.afterView='cases';
+      [...afterPage.children].filter(el=>el!==welcome).forEach(el=>caseView.appendChild(el));
+      const tabs=document.createElement('div');tabs.className='panel after-capability-tabs';tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','售后管理');tabs.innerHTML='<button class="after-capability-tab active" type="button" role="tab" aria-selected="true" data-after-tab="cases">售后维权</button><button class="after-capability-tab" type="button" role="tab" aria-selected="false" data-after-tab="refunds">批量退款</button><button class="after-capability-tab" type="button" role="tab" aria-selected="false" data-after-tab="helper">售后助手</button>';
+      const refundView=document.createElement('section');refundView.className='after-capability-view';refundView.dataset.afterView='refunds';refundView.hidden=true;refundView.innerHTML='<div class="panel"><div class="filter-grid"><div class="filter-block"><label>创建时间</label><input class="field" type="date"></div><div class="filter-block"><label>批次号</label><input class="field" placeholder="请输入批次号"></div><div class="filter-block"><label>状态</label><select class="field"><option>全部状态</option><option>处理中</option><option>全部成功</option><option>部分失败</option><option>全部失败</option></select></div><div class="filter-actions"><button class="primary" type="button">筛选</button><button class="ghost" type="button">重置筛选条件</button></div></div><div class="table-tools"><strong>共 0 条</strong><button class="primary" type="button">创建批量退款</button></div><div class="table-wrap"><table><thead><tr><th>创建时间</th><th>批次号</th><th>操作人</th><th>退款总数</th><th>退款成功</th><th>退款失败</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td colspan="8"><div class="shipping-empty"><b>暂无内容</b><span>创建批量退款后，处理结果会显示在这里。</span></div></td></tr></tbody></table></div><div class="pagination"><span>共 0 条</span><button class="page-no active" type="button">1</button></div></div>';
+      const helperView=document.createElement('section');helperView.className='after-capability-view';helperView.dataset.afterView='helper';helperView.hidden=true;helperView.innerHTML='<div class="info-strip after-helper-summary">近 7 天售后助手累计处理售后单 0；累计自动退款成功金额 US$0.00。</div><div class="panel"><div class="panel-head"><h2>自动售后规则</h2><span class="sub">按订单发货状态配置自动处理能力</span></div><div class="rule-grid"><div class="rule-card"><h3>未发货仅退款</h3><p>消费者申请未发货仅退款的指定场景，可自动同意退款。</p><button class="switch on" type="button" role="switch" aria-checked="true" aria-label="未发货仅退款"></button></div><div class="rule-card"><h3>已发货退货退款</h3><p>消费者申请退货退款的指定场景，可自动同意退货。</p><button class="switch" type="button" role="switch" aria-checked="false" aria-label="已发货退货退款"></button></div><div class="rule-card"><h3>已发货仅退款</h3><p>无需退货的指定场景，可自动直接退款。</p><button class="switch" type="button" role="switch" aria-checked="false" aria-label="已发货仅退款"></button></div></div></div>';
+      welcome.insertAdjacentElement('afterend',tabs);tabs.insertAdjacentElement('afterend',caseView);caseView.insertAdjacentElement('afterend',refundView);refundView.insertAdjacentElement('afterend',helperView);
+      const activateAfterTab=(id,focus=false)=>{tabs.querySelectorAll('[data-after-tab]').forEach(button=>{const active=button.dataset.afterTab===id;button.classList.toggle('active',active);button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;if(active&&focus)button.focus()});afterPage.querySelectorAll('[data-after-view]').forEach(view=>view.hidden=view.dataset.afterView!==id)};
+      tabs.querySelectorAll('[data-after-tab]').forEach(button=>{button.onclick=event=>{event.stopPropagation();activateAfterTab(button.dataset.afterTab)};button.onkeydown=event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const all=[...tabs.querySelectorAll('[data-after-tab]')],index=all.indexOf(button),next=event.key==='Home'?all[0]:event.key==='End'?all.at(-1):all[(index+(event.key==='ArrowRight'?1:-1)+all.length)%all.length];activateAfterTab(next.dataset.afterTab,true)}});
+    }
+
+    afterPage?.querySelectorAll('.filter-actions').forEach(actions=>actions.querySelectorAll('button').forEach(button=>{const source=button.textContent.trim();button.onclick=event=>{event.stopPropagation();if(source.includes('重置')||source.includes('清空')){actions.closest('.filter-grid')?.querySelectorAll('input,select').forEach(control=>{if(control.tagName==='SELECT')control.selectedIndex=0;else control.value=''});toast(translateString('筛选条件已重置'))}else toast(translateString(source)+': '+translateString('Demo 操作已触发'))}}));
+
+    Object.assign(languageTerms.en,{'订单':'Orders','打单发货':'Shipment','售后管理':'After-sales Management','创建批量退款':'Create Bulk Refund','批次号':'Batch No.','请输入批次号':'Enter batch number','操作人':'Operator','退款总数':'Total Refunds','退款成功':'Refunded','退款失败':'Failed','创建批量退款后，处理结果会显示在这里。':'Results will appear here after a bulk refund is created.','自动售后规则':'Automated After-sales Rules','按订单发货状态配置自动处理能力':'Configure automation by shipment status','未发货仅退款':'Refund Before Shipment','消费者申请未发货仅退款的指定场景，可自动同意退款。':'Automatically approve eligible refund-only requests before shipment.','已发货退货退款':'Return and Refund','消费者申请退货退款的指定场景，可自动同意退货。':'Automatically approve eligible return-and-refund requests after shipment.','已发货仅退款':'Refund After Shipment','无需退货的指定场景，可自动直接退款。':'Automatically refund eligible requests that do not require a return.'});
+    Object.assign(languageTerms.ms,{'订单':'Pesanan','打单发货':'Penghantaran','售后管理':'Pengurusan Selepas Jualan','创建批量退款':'Cipta Bayaran Balik Pukal','批次号':'No. Kelompok','请输入批次号':'Masukkan nombor kelompok','操作人':'Pengendali','退款总数':'Jumlah Bayaran Balik','退款成功':'Berjaya Dibayar Balik','退款失败':'Gagal','创建批量退款后，处理结果会显示在这里。':'Hasil akan dipaparkan selepas bayaran balik pukal dicipta.','自动售后规则':'Peraturan Selepas Jualan Automatik','按订单发货状态配置自动处理能力':'Konfigurasi automasi mengikut status penghantaran','未发货仅退款':'Bayaran Balik Sebelum Penghantaran','消费者申请未发货仅退款的指定场景，可自动同意退款。':'Luluskan permintaan bayaran balik yang layak sebelum penghantaran secara automatik.','已发货退货退款':'Pemulangan dan Bayaran Balik','消费者申请退货退款的指定场景，可自动同意退货。':'Luluskan permintaan pemulangan yang layak selepas penghantaran secara automatik.','已发货仅退款':'Bayaran Balik Selepas Penghantaran','无需退货的指定场景，可自动直接退款。':'Bayar balik permintaan yang layak tanpa pemulangan secara automatik.'});
+    document.querySelectorAll('.nav-section').forEach(section=>{section.classList.add('collapsed');section.querySelector('.nav-parent')?.setAttribute('aria-expanded','false')});
+    applyLanguage(currentLanguage);
+  })();
+</script>
 </body>
 </html>
