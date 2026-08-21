@@ -615,6 +615,65 @@
       html[data-design-system="elink-retail"] .pagination-input,
       html[data-design-system="elink-retail"] .pagination-go{height:40px;min-height:40px}
     }
+    /* Dashboard visual rhythm and reference-inspired secondary navigation. */
+    html[data-design-system="elink-retail"]{--dashboard-green:#18a673;--dashboard-coral:#f06b58}
+    html[data-design-system="elink-retail"] .nav-section:has(.nav-item.active)>.nav-parent,
+    html[data-design-system="elink-retail"] .nav-section:has(.nav-item.active)>.nav-parent.selected{background:#f3f7ff;color:#1769d5}
+    html[data-design-system="elink-retail"] .nav-section:has(.nav-item.active)>.nav-parent .icon{color:#1769d5}
+    html[data-design-system="elink-retail"] .nav-section:has(.nav-item.active)>.nav-parent .chev{color:#6b9ee8}
+    html[data-design-system="elink-retail"] .nav-item{margin:2px 0;padding-left:45px;border-radius:7px;overflow:hidden}
+    html[data-design-system="elink-retail"] .nav-item.active{background:#eaf3ff;color:#0f64d8;font-weight:650}
+    html[data-design-system="elink-retail"] .nav-item.active:before{display:block;left:0;top:7px;width:3px;height:26px;border-radius:0 3px 3px 0;background:#1774ff}
+    html[data-design-system="elink-retail"] #dashboard>.welcome{position:relative;overflow:hidden;border:1px solid #dce9fb;background:linear-gradient(100deg,#f7fbff 0%,#eef6ff 68%,#f9fcff 100%);box-shadow:none}
+    html[data-design-system="elink-retail"] #dashboard>.welcome:after{content:"";position:absolute;right:24px;top:0;width:132px;height:100%;background:linear-gradient(135deg,transparent 18%,rgb(23 116 255 / .055) 18% 42%,transparent 42% 58%,rgb(24 166 115 / .055) 58% 78%,transparent 78%);pointer-events:none}
+    html[data-design-system="elink-retail"] #dashboard>.welcome h1{color:#18314f}
+    html[data-design-system="elink-retail"] #dashboard>.grid{grid-template-columns:minmax(0,2.15fr) minmax(270px,.85fr);gap:18px}
+    html[data-design-system="elink-retail"] #dashboard .panel{border-color:#e2e9f2;box-shadow:0 2px 8px rgb(28 48 75 / .035)}
+    html[data-design-system="elink-retail"] #dashboard .panel-head{min-height:52px;padding:9px 18px}
+    html[data-design-system="elink-retail"] #dashboard .setting-row{margin:12px;border:1px solid #e8edf4;border-radius:8px;background:#fbfcfe}
+    html[data-design-system="elink-retail"] #dashboard .todo{grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
+    html[data-design-system="elink-retail"] #dashboard .todo-item{min-height:82px;padding:12px 14px;border:1px solid #e8edf4;background:#fbfcfe;text-align:left;transition:border-color .14s,background-color .14s,transform .14s}
+    html[data-design-system="elink-retail"] #dashboard .todo-item:hover{border-color:#bdd3f5;background:#f5f9ff;transform:translateY(-1px)}
+    html[data-design-system="elink-retail"] #dashboard .todo-num{font-size:22px;line-height:1.15;color:#1774ff}
+    html[data-design-system="elink-retail"] #dashboard .todo-item:nth-child(3) .todo-num{color:var(--dashboard-coral)}
+    html[data-design-system="elink-retail"] #dashboard .todo-label{font-size:12px;line-height:1.35}
+    html[data-design-system="elink-retail"] #dashboard .overview-panel{overflow:hidden}
+    html[data-design-system="elink-retail"] #dashboard .metric-row{gap:10px;padding:14px 16px 8px}
+    html[data-design-system="elink-retail"] #dashboard .metric{position:relative;padding:13px 14px;border:1px solid #e8edf4!important;border-radius:8px;background:#fbfcfe}
+    html[data-design-system="elink-retail"] #dashboard .metric:before{content:"";position:absolute;left:0;top:13px;width:3px;height:24px;border-radius:0 3px 3px 0;background:#1774ff}
+    html[data-design-system="elink-retail"] #dashboard .metric:nth-child(2):before{background:var(--dashboard-green)}
+    html[data-design-system="elink-retail"] #dashboard .metric:nth-child(3):before{background:#6f7fe8}
+    html[data-design-system="elink-retail"] #dashboard .metric:nth-child(4):before{background:var(--dashboard-coral)}
+    html[data-design-system="elink-retail"] #dashboard .metric-value{font-size:21px;margin:5px 0 1px;color:#1d2939}
+    html[data-design-system="elink-retail"] #dashboard .up{display:inline-flex;align-items:center;padding:1px 6px;border-radius:999px;background:#eaf8f2;color:#13845d;font-weight:600}
+    html[data-design-system="elink-retail"] #dashboard .trend-chart{height:232px;padding:8px 16px 14px;border-top:0;background:#fff;display:block}
+    html[data-design-system="elink-retail"] #dashboard .trend-chart svg{display:block;width:100%;height:100%;overflow:visible}
+    html[data-design-system="elink-retail"] #dashboard .chart-grid path{fill:none;stroke:#e8edf4;stroke-width:1;vector-effect:non-scaling-stroke}
+    html[data-design-system="elink-retail"] #dashboard .chart-axis{fill:#8a98aa;font-size:10px;font-family:Inter,sans-serif}
+    html[data-design-system="elink-retail"] #dashboard .trend-area{fill:url(#dashboardTrendFill)}
+    html[data-design-system="elink-retail"] #dashboard .trend-line{fill:none;stroke:#1774ff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    html[data-design-system="elink-retail"] #dashboard .trend-points circle{fill:#fff;stroke:#1774ff;stroke-width:2;vector-effect:non-scaling-stroke}
+    html[data-design-system="elink-retail"] #dashboard aside .notice{position:relative;padding-left:13px}
+    html[data-design-system="elink-retail"] #dashboard aside .notice:before{content:"";position:absolute;left:0;top:19px;width:5px;height:5px;border-radius:50%;background:#1774ff}
+    html[data-design-system="elink-retail"] #dashboard aside .notice:nth-child(2):before{background:var(--dashboard-green)}
+    html[data-design-system="elink-retail"] #dashboard aside .notice:nth-child(3):before{background:var(--dashboard-coral)}
+    html[data-design-system="elink-retail"] #dashboard .quick{gap:10px;padding:12px}
+    html[data-design-system="elink-retail"] #dashboard .quick-item{height:72px;border-color:#e4eaf2;background:#fbfcfe;text-align:center}
+    html[data-design-system="elink-retail"] #dashboard .quick-item:hover{border-color:#b9d1f6;background:#f3f8ff}
+    @media(max-width:1199px){
+      html[data-design-system="elink-retail"] #dashboard>.grid{grid-template-columns:1fr}
+      html[data-design-system="elink-retail"] #dashboard .metric-row{grid-template-columns:repeat(2,1fr)}
+      html[data-design-system="elink-retail"] #dashboard>.grid>aside{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    }
+    @media(max-width:767px){
+      html[data-design-system="elink-retail"] #dashboard>.welcome:after{right:-28px;width:110px}
+      html[data-design-system="elink-retail"] #dashboard .todo{grid-template-columns:repeat(2,1fr)}
+      html[data-design-system="elink-retail"] #dashboard .metric-row{grid-template-columns:1fr 1fr;padding:12px}
+      html[data-design-system="elink-retail"] #dashboard .metric{padding:11px 12px}
+      html[data-design-system="elink-retail"] #dashboard .metric-value{font-size:18px}
+      html[data-design-system="elink-retail"] #dashboard .trend-chart{height:205px;padding:4px 10px 12px}
+      html[data-design-system="elink-retail"] #dashboard>.grid>aside{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
@@ -637,7 +696,7 @@
         <div class="grid"><div>
           <div class="panel"><div class="panel-head"><h2>近期直播</h2><span class="sub">即将开始</span><button class="panel-link" data-page="liveManage">全部直播 →</button></div><div class="setting-list"><div class="setting-row"><div><b>本本直播测试</b><p>开播时间：2026-08-13 11:00</p></div><div><span class="status warn">未开始</span></div><div class="inline-controls"><button class="ghost">去分享</button><button class="primary">去开播</button></div></div></div></div>
           <div class="panel"><div class="panel-head"><h2>待办事项</h2><span class="sub">需及时处理</span><button class="panel-link" data-page="orders">查看全部 →</button></div><div class="todo"><button class="todo-item" data-page="feedback"><span class="todo-num">0</span><span class="todo-label">待处理投诉</span></button><button class="todo-item" data-page="orders"><span class="todo-num">0</span><span class="todo-label">待付款订单</span></button><button class="todo-item" data-page="shipping"><span class="todo-num">5</span><span class="todo-label">待发货订单（近30天）</span></button><button class="todo-item" data-page="aftersales"><span class="todo-num">0</span><span class="todo-label">待处理售后订单</span></button><button class="todo-item" data-page="feedback"><span class="todo-num">0</span><span class="todo-label">用户反馈</span></button><button class="todo-item" data-page="promoters"><span class="todo-num">0</span><span class="todo-label">待审核推广员</span></button></div></div>
-          <div class="panel"><div class="panel-head"><h2>经营概览</h2><span class="sub">数据更新至 10:00</span><button class="panel-link" data-page="analytics">详细数据 →</button></div><div class="metric-row"><div class="metric"><div class="metric-label">支付金额</div><div class="metric-value">US$ 28,640</div><span class="up">↑ 12.4%</span></div><div class="metric"><div class="metric-label">支付订单</div><div class="metric-value">186</div><span class="up">↑ 8.1%</span></div><div class="metric"><div class="metric-label">访客数</div><div class="metric-value">3,241</div><span class="up">↑ 5.6%</span></div><div class="metric"><div class="metric-label">支付转化率</div><div class="metric-value">5.74%</div><span class="up">↑ 0.8%</span></div></div><div class="chart"><div class="bar" style="height:34%"></div><div class="bar" style="height:46%"></div><div class="bar" style="height:41%"></div><div class="bar" style="height:62%"></div><div class="bar" style="height:52%"></div><div class="bar active" style="height:78%"></div><div class="bar" style="height:70%"></div><div class="bar active" style="height:92%"></div></div></div>
+          <div class="panel overview-panel"><div class="panel-head"><h2>经营概览</h2><span class="sub">数据更新至 10:00</span><button class="panel-link" data-page="analytics">详细数据 →</button></div><div class="metric-row"><div class="metric"><div class="metric-label">支付金额</div><div class="metric-value">US$ 28,640</div><span class="up">↑ 12.4%</span></div><div class="metric"><div class="metric-label">支付订单</div><div class="metric-value">186</div><span class="up">↑ 8.1%</span></div><div class="metric"><div class="metric-label">访客数</div><div class="metric-value">3,241</div><span class="up">↑ 5.6%</span></div><div class="metric"><div class="metric-label">支付转化率</div><div class="metric-value">5.74%</div><span class="up">↑ 0.8%</span></div></div><div class="chart trend-chart" role="img" aria-label="支付金额"><svg viewBox="0 0 760 220" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dashboardTrendFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1774ff" stop-opacity=".22"/><stop offset="1" stop-color="#1774ff" stop-opacity="0"/></linearGradient></defs><g class="chart-grid"><path d="M54 28H742M54 72H742M54 116H742M54 160H742"/><path d="M54 28V176H742"/></g><g class="chart-axis"><text x="18" y="33">30k</text><text x="18" y="77">20k</text><text x="18" y="121">10k</text><text x="54" y="205">8/07</text><text x="150" y="205">8/08</text><text x="246" y="205">8/09</text><text x="342" y="205">8/10</text><text x="438" y="205">8/11</text><text x="534" y="205">8/12</text><text x="630" y="205">8/13</text></g><path class="trend-area" d="M54 146C94 138 118 124 150 128S214 144 246 116S310 90 342 98S406 118 438 86S502 72 534 80S598 52 630 62S704 44 742 34V176H54Z"/><path class="trend-line" d="M54 146C94 138 118 124 150 128S214 144 246 116S310 90 342 98S406 118 438 86S502 72 534 80S598 52 630 62S704 44 742 34"/><g class="trend-points"><circle cx="54" cy="146" r="4"/><circle cx="150" cy="128" r="4"/><circle cx="246" cy="116" r="4"/><circle cx="342" cy="98" r="4"/><circle cx="438" cy="86" r="4"/><circle cx="534" cy="80" r="4"/><circle cx="630" cy="62" r="4"/><circle cx="742" cy="34" r="5"/></g></svg></div></div>
         </div><aside><div class="panel"><div class="panel-head"><h2>公告</h2><button class="panel-link">更多 →</button></div><div class="notice-list"><div class="notice"><b>8 月支付通道维护通知</b><small>今天 09:30</small></div><div class="notice"><b>物流配置更新通知</b><small>08-10</small></div><div class="notice"><b>优惠劵数据口径更新</b><small>08-08</small></div></div></div><div class="panel"><div class="panel-head"><h2>快捷入口</h2></div><div class="quick"><button data-page="products">＋<br>新建实物商品</button><button data-page="shipping" data-shipping-target="batch">▣<br>批量发货</button><button data-page="builder">▤<br>商城管理</button><button data-page="coupons">◇<br>优惠劵</button></div></div></aside></div>
         <div class="panel"><div class="panel-head"><h2>最近管理</h2><span class="sub">最近编辑的商品与内容</span></div><div class="table-wrap"><table><thead><tr><th>名称</th><th>类型</th><th>浏览量</th><th>销量</th><th>更新时间</th><th>操作</th></tr></thead><tbody><tr><td><b>旅行洗护套装</b></td><td>实物商品</td><td>328</td><td>128</td><td>2026-08-12 16:20</td><td><button class="action" data-page="products">管理</button></td></tr><tr><td><b>本本直播测试</b></td><td>直播</td><td>0</td><td>--</td><td>2026-08-13 10:30</td><td><button class="action" data-page="liveManage">管理</button></td></tr></tbody></table></div></div>
       </section>
