@@ -332,6 +332,130 @@
       html[data-design-system="elink-retail"] td{padding:13px 14px}
       html[data-design-system="elink-retail"] .live-submit-bar{border-radius:0}
     }
+    /* Reference-aligned layout: airy page architecture, lists and tables. */
+    html[data-design-system="elink-retail"]{
+      --background:#fff;--bg:#fff;--line:#e1e5eb;--border:#e1e5eb;--input:#d9dee7;
+      --muted-surface:#f7f8fb;--side:248px
+    }
+    html[data-design-system="elink-retail"] body{background:#fff;color:#171a22}
+    html[data-design-system="elink-retail"] .topbar{border-bottom:1px solid #e1e5eb;background:#fff;box-shadow:none}
+    html[data-design-system="elink-retail"] .brand{font-size:18px;font-weight:750}
+    html[data-design-system="elink-retail"] .global-search-trigger{width:min(430px,38vw);height:40px;border-radius:8px;background:#f7f8fa}
+    html[data-design-system="elink-retail"] .sidebar{padding:18px 10px 28px;background:#fff}
+    html[data-design-system="elink-retail"] .sidebar:after{content:"";display:block;height:24px}
+    html[data-design-system="elink-retail"] .nav-section{margin:5px 0}
+    html[data-design-system="elink-retail"] .nav-parent{min-height:46px;padding:10px 12px;font-size:14px;font-weight:650}
+    html[data-design-system="elink-retail"] .nav-item{min-height:42px;padding:9px 12px 9px 46px;font-size:14px}
+    html[data-design-system="elink-retail"] .nav-parent.selected{background:var(--brand-soft);color:var(--brand2)}
+    html[data-design-system="elink-retail"] .nav-item.active{position:relative;background:var(--brand-soft);color:var(--brand2)}
+    html[data-design-system="elink-retail"] .nav-item.active:before{display:block;left:0;width:3px;height:24px;border-radius:0 3px 3px 0;background:var(--primary)}
+    html[data-design-system="elink-retail"] .page-head{min-height:68px;border-bottom:0;padding:12px clamp(32px,4vw,72px);background:#fff}
+    html[data-design-system="elink-retail"] .content{max-width:none;margin:0;padding:34px clamp(32px,4vw,72px) 72px}
+    html[data-design-system="elink-retail"] .workspace:has(.page-head.dashboard-hidden) .content{padding-top:38px}
+    html[data-design-system="elink-retail"] .page>.welcome,html[data-design-system="elink-retail"] .live-create-flow>.welcome{min-height:92px;margin:0 0 30px;align-items:flex-start}
+    html[data-design-system="elink-retail"] .welcome h1,html[data-design-system="elink-retail"] .products-page-head h1{margin:0 0 7px;font-size:30px;font-weight:750;line-height:1.16;color:#171a22}
+    html[data-design-system="elink-retail"] .welcome p{font-size:14px;color:#647087}
+    html[data-design-system="elink-retail"] .page-primary-actions{padding-top:2px}
+    html[data-design-system="elink-retail"] :is(.primary,.ghost){min-height:42px;padding-inline:17px;border-radius:8px;font-size:14px}
+    html[data-design-system="elink-retail"] .primary{font-weight:680}
+    html[data-design-system="elink-retail"] .panel{border:1px solid var(--border);border-radius:12px;margin-bottom:24px;box-shadow:none;overflow:hidden}
+    html[data-design-system="elink-retail"] .panel-head{min-height:68px;padding:14px 20px;border-bottom:1px solid #e7eaf0}
+    html[data-design-system="elink-retail"] .panel-head h2{font-size:17px;font-weight:720}
+    html[data-design-system="elink-retail"] .panel-head .sub{font-size:13px}
+    html[data-design-system="elink-retail"] .grid{grid-template-columns:minmax(0,2.15fr) minmax(320px,.85fr);gap:24px}
+    html[data-design-system="elink-retail"] .tabs{min-height:58px;gap:28px;padding-inline:20px}
+    html[data-design-system="elink-retail"] .tab{min-height:58px;font-size:14px}
+    html[data-design-system="elink-retail"] .filters,html[data-design-system="elink-retail"] .filter-grid,html[data-design-system="elink-retail"] .query-panel,html[data-design-system="elink-retail"] .filter-system{padding:22px 20px;background:#fff}
+    html[data-design-system="elink-retail"] .filter-grid,html[data-design-system="elink-retail"] .filter-system>.query-grid{gap:18px 16px}
+    html[data-design-system="elink-retail"] .filter-block,html[data-design-system="elink-retail"] .query-field{gap:7px}
+    html[data-design-system="elink-retail"] :is(.filter-block label,.query-field>label,.filter-system .query-field>label){color:#4e596d;font-size:13px;font-weight:620}
+    html[data-design-system="elink-retail"] .field,html[data-design-system="elink-retail"] .date-period-trigger{height:44px;min-height:44px;border-radius:8px;padding-inline:13px;font-size:14px}
+    html[data-design-system="elink-retail"] .filter-actions,html[data-design-system="elink-retail"] .query-actions,html[data-design-system="elink-retail"] .filter-system .query-actions{min-height:44px;gap:10px}
+    html[data-design-system="elink-retail"] .table-tools{min-height:70px;padding:13px 20px;border-top:8px solid #f7f8fb;border-bottom:1px solid #e7eaf0;background:#fff}
+    html[data-design-system="elink-retail"] .table-tools strong{font-size:16px;font-weight:720}
+    html[data-design-system="elink-retail"] .table-wrap{background:#fff}
+    html[data-design-system="elink-retail"] table{font-size:14px}
+    html[data-design-system="elink-retail"] th{height:58px;padding:0 20px;border-top:0;border-bottom:1px solid #e4e8ee;background:#f8f9fb;color:#778195;font-size:13px;font-weight:650;white-space:nowrap}
+    html[data-design-system="elink-retail"] td{height:72px;padding:16px 20px;border-bottom:1px solid #e8ebf0;line-height:1.55}
+    html[data-design-system="elink-retail"] tbody tr:last-child td{border-bottom:0}
+    html[data-design-system="elink-retail"] tbody tr:hover{background:#fafcff}
+    html[data-design-system="elink-retail"] .thumb{width:52px;height:52px;border-radius:8px;background:#f0f3f7}
+    html[data-design-system="elink-retail"] .product{gap:14px}
+    html[data-design-system="elink-retail"] .product b{font-weight:680}
+    html[data-design-system="elink-retail"] .muted{font-size:13px;color:#748096}
+    html[data-design-system="elink-retail"] .action{padding:7px 5px;color:#1769f5;font-weight:650}
+    html[data-design-system="elink-retail"] .status{padding:4px 10px;border:1px solid #cbe8da;font-size:13px;font-weight:650}
+    html[data-design-system="elink-retail"] .status.warn{border-color:#f4d9b3;background:#fff8ed}
+    html[data-design-system="elink-retail"] .status.info{border-color:#cbdcfb;background:#eef4ff}
+    html[data-design-system="elink-retail"] .status.bad{border-color:#f3caca;background:#fff2f2}
+    html[data-design-system="elink-retail"] .pagination{min-height:64px;padding:14px 20px;border-top:1px solid #e8ebf0}
+    html[data-design-system="elink-retail"] .page-no{width:36px;height:36px;border-radius:8px}
+    html[data-design-system="elink-retail"] .generic-section-nav{min-height:62px;padding:14px 20px;background:#fff}
+    html[data-design-system="elink-retail"] .generic-section-button{height:40px;padding-inline:16px}
+    html[data-design-system="elink-retail"] .info-strip{margin:20px 20px 0;padding:13px 15px;border-radius:8px;font-size:13px}
+    html[data-design-system="elink-retail"] .setting-list{padding:0}
+    html[data-design-system="elink-retail"] .setting-row{min-height:92px;padding:20px;border-color:#e8ebf0}
+    html[data-design-system="elink-retail"] .setting-group{min-height:58px;background:#f7f8fa;border-left:0}
+    html[data-design-system="elink-retail"] :is(.module-card,.choice-card,.rule-card,.channel-card,.event-capability,.app-center-card,.rule-row){border-radius:12px!important}
+    html[data-design-system="elink-retail"] .module-grid{gap:20px}
+    html[data-design-system="elink-retail"] .module-card{min-height:190px;padding:24px}
+    html[data-design-system="elink-retail"] .module-icon{width:44px;height:44px}
+    html[data-design-system="elink-retail"] .modal{border-radius:12px!important}
+    html[data-design-system="elink-retail"] .modal-actions{padding-top:16px}
+    html[data-design-system="elink-retail"] #dashboard>.welcome{min-height:150px;padding:25px 28px;margin-bottom:28px;border:1px solid #dfe4ec;border-radius:14px;background:#f7f9ff;display:flex;align-items:center}
+    html[data-design-system="elink-retail"] #dashboard>.welcome h1{font-size:26px}
+    html[data-design-system="elink-retail"] #dashboard>.welcome p{font-size:16px}
+    html[data-design-system="elink-retail"] #dashboard .todo{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0}
+    html[data-design-system="elink-retail"] #dashboard .todo-item{min-height:112px;padding:20px;border-right:1px solid #e8ebf0;border-bottom:1px solid #e8ebf0;border-radius:0;text-align:left}
+    html[data-design-system="elink-retail"] #dashboard .todo-item:nth-child(3n){border-right:0}
+    html[data-design-system="elink-retail"] #dashboard .todo-item:nth-last-child(-n+3){border-bottom:0}
+    html[data-design-system="elink-retail"] #dashboard .todo-num{font-size:30px;margin-bottom:4px}
+    html[data-design-system="elink-retail"] #dashboard .metric-row{gap:0;padding:0}
+    html[data-design-system="elink-retail"] #dashboard .metric{min-height:132px;padding:26px 22px;border-right:1px solid #e4e8ee}
+    html[data-design-system="elink-retail"] #dashboard .metric-label{font-size:14px;color:#566176}
+    html[data-design-system="elink-retail"] #dashboard .metric-value{font-size:28px;margin:10px 0 2px}
+    html[data-design-system="elink-retail"] #dashboard .chart{height:260px;padding:28px 22px;background-color:#fbfcff;background-size:100% 52px}
+    html[data-design-system="elink-retail"] #dashboard .notice{min-height:72px;padding:14px 0}
+    html[data-design-system="elink-retail"] #dashboard .quick{gap:12px;padding:16px}
+    html[data-design-system="elink-retail"] #dashboard .quick button{height:92px;padding:16px;border-radius:10px}
+    html[data-design-system="elink-retail"] .live-step-nav{min-height:68px;margin-bottom:24px;border-radius:12px}
+    html[data-design-system="elink-retail"] .live-step-link{min-height:66px}
+    html[data-design-system="elink-retail"] .live-create-grid{gap:24px;grid-template-columns:minmax(0,1fr) 300px}
+    html[data-design-system="elink-retail"] .live-create-main .live-section-head{padding:20px 24px}
+    html[data-design-system="elink-retail"] .live-create-main .live-form{padding:4px 24px 14px}
+    html[data-design-system="elink-retail"] .live-create-main .live-row{padding:22px 0}
+    @media(max-width:1199px){
+      html[data-design-system="elink-retail"] .content{padding:28px 28px 60px}
+      html[data-design-system="elink-retail"] .page-head{padding-inline:28px}
+      html[data-design-system="elink-retail"] .grid{grid-template-columns:1fr}
+      html[data-design-system="elink-retail"] #dashboard .grid aside{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+      html[data-design-system="elink-retail"] .live-create-grid{grid-template-columns:minmax(0,1fr) 260px}
+    }
+    @media(max-width:767px){
+      html[data-design-system="elink-retail"] .content,html[data-design-system="elink-retail"] .workspace:has(.page-head.dashboard-hidden) .content{padding:20px 12px 44px}
+      html[data-design-system="elink-retail"] .page>.welcome,html[data-design-system="elink-retail"] .live-create-flow>.welcome{min-height:auto;margin-bottom:20px}
+      html[data-design-system="elink-retail"] .welcome h1,html[data-design-system="elink-retail"] .products-page-head h1{font-size:24px}
+      html[data-design-system="elink-retail"] .panel{border-radius:10px;margin-bottom:16px}
+      html[data-design-system="elink-retail"] .panel-head{min-height:60px;padding-inline:16px}
+      html[data-design-system="elink-retail"] :is(.filters,.filter-grid,.query-panel,.filter-system){padding:16px 14px}
+      html[data-design-system="elink-retail"] .table-tools{min-height:62px;padding-inline:14px}
+      html[data-design-system="elink-retail"] th{height:54px;padding-inline:14px}
+      html[data-design-system="elink-retail"] td{height:68px;padding:14px}
+      html[data-design-system="elink-retail"] #dashboard>.welcome{min-height:150px;padding:22px 20px}
+      html[data-design-system="elink-retail"] #dashboard>.welcome h1{font-size:23px}
+      html[data-design-system="elink-retail"] #dashboard .todo{grid-template-columns:1fr 1fr}
+      html[data-design-system="elink-retail"] #dashboard .todo-item:nth-child(3n){border-right:1px solid #e8ebf0}
+      html[data-design-system="elink-retail"] #dashboard .todo-item:nth-child(2n){border-right:0}
+      html[data-design-system="elink-retail"] #dashboard .todo-item:nth-last-child(-n+3){border-bottom:1px solid #e8ebf0}
+      html[data-design-system="elink-retail"] #dashboard .todo-item:nth-last-child(-n+2){border-bottom:0}
+      html[data-design-system="elink-retail"] #dashboard .grid aside{display:block}
+      html[data-design-system="elink-retail"] #dashboard .metric-row{grid-template-columns:1fr 1fr}
+      html[data-design-system="elink-retail"] #dashboard .metric{min-height:112px;padding:20px 16px;border-bottom:1px solid #e8ebf0}
+      html[data-design-system="elink-retail"] #dashboard .metric:nth-child(2){border-right:0}
+      html[data-design-system="elink-retail"] #dashboard .metric:nth-last-child(-n+2){border-bottom:0}
+      html[data-design-system="elink-retail"] #dashboard .chart{height:210px}
+      html[data-design-system="elink-retail"] .live-create-grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
