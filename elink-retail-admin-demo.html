@@ -690,9 +690,15 @@
     html[data-design-system="elink-retail"] .loyalty-inactive-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     html[data-design-system="elink-retail"] .loyalty-inactive h2{margin:0 0 7px;font-size:18px}
     html[data-design-system="elink-retail"] .loyalty-inactive p{margin:0 auto 20px;color:var(--muted-foreground);line-height:1.6}
+    html[data-design-system="elink-retail"] body:has(.page:not(#dashboard).active) .content{padding-top:16px}
+    html[data-design-system="elink-retail"] .page>.welcome:not(#dashboard>.welcome){min-height:28px;height:auto;margin-bottom:10px;padding:0}
+    html[data-design-system="elink-retail"] .global-search-trigger kbd,
+    html[data-design-system="elink-retail"] .command-search kbd{min-width:42px;height:20px;padding:1px 6px;border-color:#d7dee8;border-radius:5px;background:#fff;color:#64748b;font-family:Inter,"Noto Sans SC","PingFang SC","Microsoft YaHei",Arial,sans-serif;font-size:11px;font-weight:500;line-height:16px;letter-spacing:0;text-align:center}
     @media(max-width:767px){
       html[data-design-system="elink-retail"] .page:not(#dashboard)>.welcome,
       html[data-design-system="elink-retail"] .products-page-head{margin-bottom:8px;padding-block:0}
+      html[data-design-system="elink-retail"] body:has(.page:not(#dashboard).active) .content{padding-top:12px}
+      html[data-design-system="elink-retail"] .page>.welcome:not(#dashboard>.welcome){min-height:26px;margin-bottom:8px}
       html[data-design-system="elink-retail"] .loyalty-inactive{min-height:300px;padding:32px 18px}
     }
   </style>
