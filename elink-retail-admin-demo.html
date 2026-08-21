@@ -544,6 +544,37 @@
       html[data-design-system="elink-retail"] .products-page-head h1,
       html[data-design-system="elink-retail"] #dashboard>.welcome h1{font-size:20px}
     }
+    /* Compact controls and one pagination pattern across all management lists. */
+    html[data-design-system="elink-retail"] :is(.primary,.ghost){height:36px;min-height:36px;padding-inline:14px}
+    html[data-design-system="elink-retail"] .icon-btn{width:36px;height:36px;min-height:36px}
+    html[data-design-system="elink-retail"] .field,
+    html[data-design-system="elink-retail"] .date-period-trigger,
+    html[data-design-system="elink-retail"] .filter-system .field,
+    html[data-design-system="elink-retail"] .filter-system .date-period-trigger,
+    html[data-design-system="elink-retail"] .query-panel .field{height:36px;min-height:36px}
+    html[data-design-system="elink-retail"] .filter-actions,
+    html[data-design-system="elink-retail"] .query-actions,
+    html[data-design-system="elink-retail"] .filter-system .query-actions{min-height:36px}
+    html[data-design-system="elink-retail"] .query-actions .primary,
+    html[data-design-system="elink-retail"] .query-actions .ghost,
+    html[data-design-system="elink-retail"] .filter-system .query-actions .primary,
+    html[data-design-system="elink-retail"] .filter-system .query-actions .ghost{height:36px;min-height:36px}
+    html[data-design-system="elink-retail"] .page-primary-actions .primary{min-width:0}
+    html[data-design-system="elink-retail"] .pagination{min-height:52px;padding:8px 16px;gap:6px;border-top:1px solid #e8ebf0;background:#fff;justify-content:flex-end}
+    html[data-design-system="elink-retail"] .pagination>span:first-child{margin-right:auto;color:#64748b;font-size:12px}
+    html[data-design-system="elink-retail"] .pagination>span:not(:first-child){color:#64748b;font-size:12px}
+    html[data-design-system="elink-retail"] .page-no{width:30px;height:30px;min-width:30px;min-height:30px;padding:0;border:1px solid #dfe4eb;border-radius:7px;background:#fff;color:#475569;font-size:12px;display:inline-grid;place-items:center}
+    html[data-design-system="elink-retail"] .page-no:hover{border-color:#b8c5d6;background:#f7f9fc;color:#1e293b}
+    html[data-design-system="elink-retail"] .page-no.active{border-color:var(--primary);background:var(--primary);color:#fff;box-shadow:none}
+    @media(max-width:767px){
+      html[data-design-system="elink-retail"] :is(.primary,.ghost,.field,.date-period-trigger),
+      html[data-design-system="elink-retail"] .filter-system :is(.primary,.ghost,.field,.date-period-trigger),
+      html[data-design-system="elink-retail"] .query-panel :is(.primary,.ghost,.field,.date-period-trigger){height:44px;min-height:44px}
+      html[data-design-system="elink-retail"] body :is(.primary,.ghost){height:44px!important;min-height:44px!important}
+      html[data-design-system="elink-retail"] .icon-btn{width:44px;height:44px;min-height:44px}
+      html[data-design-system="elink-retail"] .pagination{min-height:60px;padding:8px 12px;overflow-x:auto}
+      html[data-design-system="elink-retail"] .page-no{width:40px;height:40px;min-width:40px;min-height:40px}
+    }
   </style>
 </head>
 <body>
