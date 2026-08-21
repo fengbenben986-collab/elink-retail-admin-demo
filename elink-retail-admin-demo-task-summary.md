@@ -220,6 +220,12 @@ Shopee Seller Centre 对照结论：
 - 中文统一使用“优惠券”；区分菜单 `Apps / Aplikasi` 与操作按钮 `Apply / Gunakan`。
 - 已通过三语切换、JavaScript 语法、浏览器控制台和 `git diff --check` 检查。
 
+### 8.3 2026-08-21 企业级视觉统一
+
+- 参考企业 SaaS 风格，统一全站色彩、圆角、边框、阴影、间距和控件层级。
+- 保留现有菜单、字段、流程与交互，不新增或删除功能。
+- 已回归桌面关键页面、三语长文案及现有响应式规则。
+
 ## 9. 技术约束
 
 - 保持单文件 `elink-retail-admin-demo.html`。
