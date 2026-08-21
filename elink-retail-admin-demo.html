@@ -677,6 +677,24 @@
       html[data-design-system="elink-retail"] #dashboard .trend-chart{height:205px;padding:4px 10px 10px}
       html[data-design-system="elink-retail"] #dashboard>.grid>aside{grid-template-columns:1fr}
     }
+    /* Compact page introductions and explicit first-use state for Loyalty. */
+    html[data-design-system="elink-retail"] .page:not(#dashboard)>.welcome,
+    html[data-design-system="elink-retail"] .products-page-head{min-height:auto;margin-bottom:10px;padding-block:2px}
+    html[data-design-system="elink-retail"] .page:not(#dashboard)>.welcome p,
+    html[data-design-system="elink-retail"] .products-page-head p{display:none}
+    html[data-design-system="elink-retail"] .loyalty-inactive{min-height:360px;margin-bottom:0;display:grid;place-items:center;padding:40px 24px;text-align:center}
+    html[data-design-system="elink-retail"] .loyalty-inactive[hidden],
+    html[data-design-system="elink-retail"] .loyalty-active[hidden]{display:none}
+    html[data-design-system="elink-retail"] .loyalty-inactive-content{max-width:440px}
+    html[data-design-system="elink-retail"] .loyalty-inactive-icon{width:48px;height:48px;margin:0 auto 16px;border-radius:8px;background:var(--brand-soft);color:var(--primary);display:grid;place-items:center}
+    html[data-design-system="elink-retail"] .loyalty-inactive-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    html[data-design-system="elink-retail"] .loyalty-inactive h2{margin:0 0 7px;font-size:18px}
+    html[data-design-system="elink-retail"] .loyalty-inactive p{margin:0 auto 20px;color:var(--muted-foreground);line-height:1.6}
+    @media(max-width:767px){
+      html[data-design-system="elink-retail"] .page:not(#dashboard)>.welcome,
+      html[data-design-system="elink-retail"] .products-page-head{margin-bottom:8px;padding-block:0}
+      html[data-design-system="elink-retail"] .loyalty-inactive{min-height:300px;padding:32px 18px}
+    }
   </style>
 </head>
 <body>
@@ -749,8 +767,17 @@
         </div>
       </section>
       <section class="page" id="levelMembers">
+        <div class="panel loyalty-inactive" id="loyaltyInactive">
+          <div class="loyalty-inactive-content">
+            <div class="loyalty-inactive-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.5 3 7.8 7.5 9.5 4.5-1.7 7.5-5 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <h2>等级会员尚未开启</h2>
+            <p>开启后，可配置会员等级、成长值规则和会员权益。</p>
+            <button class="primary" type="button" id="enableLoyalty">开启使用</button>
+          </div>
+        </div>
+        <div class="loyalty-active" id="loyaltyActive" hidden>
         <div class="panel">
-          <div class="member-overview-head"><h2>等级会员</h2><button class="switch on" type="button" aria-label="等级会员开关"></button><button class="action">会员邀请</button><button class="action">查看示例</button><div class="member-head-actions"><button class="ghost">使用协议</button></div></div>
+          <div class="member-overview-head"><h2>等级会员</h2><button class="action">会员邀请</button><button class="action">查看示例</button><div class="member-head-actions"><button class="ghost">使用协议</button></div></div>
         </div>
         <div class="panel">
           <div class="panel-head"><h2>数据概览</h2><span class="sub">更新时间 2026-08-13 10:00</span></div>
@@ -779,6 +806,7 @@
             <div class="member-section"><h3 class="member-section-title">引导入会</h3><div class="member-setting-row"><strong>引导弹窗</strong><div class="check-line"><label><input type="checkbox" checked> 个人中心</label><button class="action">查看示例</button><label><input type="checkbox"> 进入直播间</label><button class="action">查看示例</button></div></div></div>
             <div class="member-section"><h3 class="member-section-title">会员中心装修</h3><div class="member-setting-row"><strong>会员卡号展示</strong><div class="radio-line"><label><input type="radio" name="memberCode" checked> 开启</label><label><input type="radio" name="memberCode"> 关闭</label></div></div></div><div class="member-savebar"><button class="primary">保存</button></div>
           </div>
+        </div>
         </div>
       </section>
       <section class="page" id="builder"><div class="welcome"><div><h1>商城管理</h1><p>管理移动端商城与电脑端商城的店铺主页。</p></div><button class="primary">装修</button></div><div class="module-grid"><div class="module-card"><div class="module-icon">▤</div><h3>移动端商城</h3><p>查看店铺主页与个人中心，进入装修流程。</p><button class="ghost">装修</button></div><div class="module-card"><div class="module-icon">▣</div><h3>电脑端商城</h3><p>管理电脑端商城页面展示。</p><button class="ghost">装修</button></div><div class="module-card"><div class="module-icon">↻</div><h3>更换</h3><p>更换当前商城模板。</p><button class="ghost">更换</button></div></div></section>
@@ -1108,6 +1136,12 @@
   const quickAccessItems=[{id:'products',label:'新建实物商品',icon:quickIcon('packagePlus')},{id:'shippingBatch',page:'shipping',target:'batch',label:'批量发货',icon:quickIcon('packageCheck')},{id:'builder',label:'商城管理',icon:quickIcon('store')},{id:'coupons',label:'优惠劵',icon:quickIcon('ticket')},{id:'orders',label:'全部订单',icon:quickIcon('receipt')},{id:'shipping',label:'发货中心',icon:quickIcon('truck')},{id:'liveCreate',label:'新建直播',icon:quickIcon('radio')},{id:'promoters',label:'推广员',icon:quickIcon('users')}],defaultQuickAccess=['products','shippingBatch','builder','coupons'];let selectedQuickAccess=[...defaultQuickAccess];const quickAccess=document.querySelector('.quick');quickAccess.id='quickAccess';quickAccess.previousElementSibling.insertAdjacentHTML('beforeend','<button class="quick-config-btn" id="quickConfigBtn" aria-label="配置快捷入口" title="配置快捷入口"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 13.5v-3l-2-.7-.7-1.7.9-1.9-2.1-2.1-1.9.9-1.7-.7-.7-2h-3l-.7 2-1.7.7-1.9-.9-2.1 2.1.9 1.9-.7 1.7-2 .7v3l2 .7.7 1.7-.9 1.9 2.1 2.1 1.9-.9 1.7.7.7 2h3l.7-2 1.7-.7 1.9.9 2.1-2.1-.9-1.9.7-1.7 2-.7Z"/></svg></button>');function renderQuickAccess(){quickAccess.innerHTML=selectedQuickAccess.map(id=>{const item=quickAccessItems.find(x=>x.id===id),target=item.target?` data-shipping-target="${item.target}"`:'';return `<button class="quick-item" data-page="${item.page||item.id}"${target}><span class="quick-icon">${item.icon}</span>${item.label}</button>`}).join('');applyLanguage(currentLanguage)}function renderQuickOptions(){document.getElementById('quickOptions').innerHTML=quickAccessItems.map(item=>`<label class="quick-option"><input type="checkbox" value="${item.id}" ${selectedQuickAccess.includes(item.id)?'checked':''}><span>${item.label}</span></label>`).join('');applyLanguage(currentLanguage)}renderQuickAccess();const quickModal=document.getElementById('quickConfigModal');document.getElementById('quickConfigBtn').onclick=()=>{renderQuickOptions();quickModal.classList.add('show')};document.getElementById('closeQuickConfig').onclick=()=>quickModal.classList.remove('show');document.getElementById('resetQuickAccess').onclick=()=>{selectedQuickAccess=[...defaultQuickAccess];renderQuickOptions()};document.getElementById('saveQuickAccess').onclick=()=>{const checked=[...document.querySelectorAll('#quickOptions input:checked')].map(x=>x.value);if(!checked.length)return toast(translateString('请至少选择 1 个快捷入口'));if(checked.length>4)return toast(translateString('最多选择 4 个快捷入口'));selectedQuickAccess=checked;renderQuickAccess();quickModal.classList.remove('show');toast(translateString('快捷入口已保存'))};quickModal.onclick=e=>{if(e.target===quickModal)quickModal.classList.remove('show')};
   function closeRowMenus(){document.querySelectorAll('.row-action-menu.open').forEach(menu=>{menu.classList.remove('open');menu.closest('.row-actions')?.querySelector('.row-more-trigger')?.setAttribute('aria-expanded','false')})}document.addEventListener('click',e=>{const trigger=e.target.closest('.row-more-trigger');if(trigger){e.preventDefault();e.stopPropagation();const menu=trigger.nextElementSibling,willOpen=!menu.classList.contains('open');closeRowMenus();if(willOpen){menu.classList.add('open');trigger.setAttribute('aria-expanded','true');const rect=trigger.getBoundingClientRect(),menuRect=menu.getBoundingClientRect(),left=Math.max(8,Math.min(innerWidth-menuRect.width-8,rect.right-menuRect.width)),top=rect.bottom+4+menuRect.height>innerHeight?rect.top-menuRect.height-4:rect.bottom+4;menu.style.left=`${left}px`;menu.style.top=`${Math.max(8,top)}px`}return}if(!e.target.closest('.row-action-menu'))closeRowMenus()});document.querySelectorAll('.date-period').forEach(component=>{const trigger=component.querySelector('.date-period-trigger'),menu=component.querySelector('.date-period-menu');trigger.addEventListener('click',()=>menu.classList.toggle('menu-left',trigger.getBoundingClientRect().left+390>innerWidth))});document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('.row-more-trigger,.sidebar-collapse-btn')){e.preventDefault();e.target.click();return}if(e.key==='Escape'){closeRowMenus();closeSidebarDrawer();document.querySelectorAll('.date-period.open').forEach(x=>{x.classList.remove('open');x.querySelector('.date-period-trigger').setAttribute('aria-expanded','false')})}});window.addEventListener('resize',()=>{closeRowMenus();if(innerWidth>=768)closeSidebarDrawer()});
   const productTools=document.querySelector('#products .table-tools');if(productTools)productTools.innerHTML='<strong>共 129 件实物商品</strong><button class="ghost">商品默认设置</button><button class="ghost">上架</button><button class="ghost">下架</button><button class="ghost">删除</button><button class="ghost">设置收款账户</button><button class="ghost">导出</button>';
+  Object.assign(languageTerms.en,{'等级会员尚未开启':'Loyalty is not enabled','开启后，可配置会员等级、成长值规则和会员权益。':'Enable Loyalty to configure membership tiers, growth rules and member benefits.','开启使用':'Enable Loyalty','等级会员已开启':'Loyalty enabled'});
+  Object.assign(languageTerms.ms,{'等级会员尚未开启':'Program Kesetiaan belum diaktifkan','开启后，可配置会员等级、成长值规则和会员权益。':'Aktifkan Program Kesetiaan untuk mengkonfigurasi tahap keahlian, peraturan pertumbuhan dan faedah ahli.','开启使用':'Aktifkan Program Kesetiaan','等级会员已开启':'Program Kesetiaan diaktifkan'});
+  const loyaltyInactive=document.getElementById('loyaltyInactive'),loyaltyActive=document.getElementById('loyaltyActive'),enableLoyalty=document.getElementById('enableLoyalty');
+  function renderLoyaltyState(enabled){loyaltyInactive.hidden=enabled;loyaltyActive.hidden=!enabled}
+  let loyaltyEnabled=false;try{loyaltyEnabled=localStorage.getItem('elinkLoyaltyEnabled')==='true'}catch(error){}renderLoyaltyState(loyaltyEnabled);
+  enableLoyalty.addEventListener('click',()=>{try{localStorage.setItem('elinkLoyaltyEnabled','true')}catch(error){}renderLoyaltyState(true);toast(translateString('等级会员已开启'))});
   document.querySelectorAll('#memberTabs [data-member-pane]').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('#levelMembers .member-pane').forEach(pane=>pane.classList.remove('active'));document.getElementById(tab.dataset.memberPane).classList.add('active')}));
   document.querySelectorAll('.tabs').forEach(list=>{list.setAttribute('role','tablist');list.querySelectorAll('.tab').forEach(tab=>{tab.setAttribute('role','tab');tab.setAttribute('aria-selected',String(tab.classList.contains('active')))})});
   document.querySelectorAll('.switch').forEach(sw=>{sw.setAttribute('role','switch');sw.setAttribute('aria-checked',String(sw.classList.contains('on')))});
