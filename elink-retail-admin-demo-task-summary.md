@@ -55,7 +55,7 @@
 
 - “批量发货”已合并到“发货中心”的页内 Tab。
 - “批量退款”和“售后助手”已合并到“售后维权”的页内 Tabs。
-- Customers 已调整到 Orders 上方。
+- 一级菜单顺序统一为 Home、Customers、Live、Products、Orders、Online Store、Marketing、Apps、Settings；桌面侧栏和移动端抽屉共用同一顺序。
 
 ### 3.2 全部订单
 
