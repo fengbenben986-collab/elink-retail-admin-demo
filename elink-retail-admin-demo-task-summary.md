@@ -8,7 +8,7 @@
 - Demo 主文件：`elink-retail-admin-demo.html`
 - 架构：单 HTML 文件，使用 CSS、HTML 与原生 JavaScript，不拆分 React/Vue 工程。
 - 当前分支：`master`
-- 当前基线：`0fe992a Match Shopify order filtering interactions`
+- 本轮修改起点：`281e4a3 Consolidate demo task summary`；完成后以 `master` 最新提交为准。
 - GitHub 仓库：<https://github.com/fengbenben986-collab/elink-retail-admin-demo>
 - 公网 Demo：<https://fengbenben986-collab.github.io/elink-retail-admin-demo/>
 - 支持语言：English、简体中文、Bahasa Melayu。
@@ -72,6 +72,16 @@
 - 支持当页全选、逐行选择和选中后的批量操作栏，保留 eLink 批量发货、订单详情与发货动作。
 - 导出对话框支持当前页面、全部订单、当前筛选结果、已选订单，以及 Excel 兼容 CSV / 纯 CSV；Demo 可下载示例文件。
 - 已检查筛选、搜索、状态 Tab、排序、列管理、批量选择、导出、三语切换和 375px 移动端表格滚动。
+
+2026-08-24 列表组件定稿调整：
+
+- 页面结构统一为“一级标题 → 页面级蓝色说明条 → 列表容器”，说明条不再嵌入列表框。
+- 搜索筛选栏移除“全部”范围控件；订单状态仅保留顶部 Tabs，不作为重复筛选字段。
+- 搜索筛选栏使用清晰的默认边框和聚焦环；桌面与移动端沿用同一组件结构。
+- 根据 eLink 全部订单实页补齐 25 个筛选字段类型及其可选值，包括 12 种订单搜索字段、下单/支付时间、实收金额、商品/订单类型、营销玩法、渠道来源、售后、核销、配送、支付、收款和订单标记。
+- 日期筛选参考 Shopify 的渐进式菜单，提供今天、昨天、过去 7/30 天、过去 6 个月、过去 1 年、自定义日期和自定义范围；金额筛选保留最小值、最大值及“非 US$0”。
+- Shopify 只提供交互参考；字段、枚举和状态均来自 2026-08-24 对 eLink 管理台的只读核对。
+- 已完成 JavaScript/HTML 结构、桌面与 375px 移动端、日期菜单、English/简体中文/Bahasa Melayu 切换、浏览器控制台及 `git diff --check` 验证。
 
 ### 3.3 发货中心与售后维权
 
