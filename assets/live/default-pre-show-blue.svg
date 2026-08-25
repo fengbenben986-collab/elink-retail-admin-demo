@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 422" role="img" aria-labelledby="title desc">
+  <title id="title">eLink live pre-show image</title><desc id="desc">Blue pre-show countdown artwork.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#063b9c"/><stop offset=".55" stop-color="#0d6be8"/><stop offset="1" stop-color="#29a8ff"/></linearGradient></defs>
+  <rect width="750" height="422" rx="24" fill="url(#bg)"/><path d="M0 314c153-78 267-65 394 2 112 59 213 66 356-16v122H0z" fill="#fff" opacity=".09"/><g fill="none" stroke="#fff" opacity=".28"><circle cx="624" cy="104" r="58"/><circle cx="624" cy="104" r="82"/></g>
+  <g transform="translate(96 76)"><rect width="196" height="270" rx="28" fill="#fff" opacity=".96"/><rect x="25" y="27" width="146" height="164" rx="18" fill="#e7f3ff"/><path d="M69 163V92a29 29 0 0158 0v71" fill="none" stroke="#1474e8" stroke-width="14" stroke-linecap="round"/><circle cx="98" cy="86" r="13" fill="#82c8ff"/><rect x="47" y="215" width="102" height="13" rx="6.5" fill="#273e63"/><rect x="64" y="242" width="68" height="9" rx="4.5" fill="#a8bad2"/></g>
+  <g transform="translate(356 118)" fill="#fff" font-family="Arial, sans-serif"><text y="42" font-size="24" font-weight="700">LIVE STARTS SOON</text><text y="134" font-size="76" font-weight="700">10:00</text><rect y="164" width="236" height="12" rx="6" opacity=".45"/><rect y="190" width="172" height="10" rx="5" opacity=".28"/></g>
+</svg>
