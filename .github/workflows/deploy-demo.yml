@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths:
       - elink-retail-admin-demo.html
+      - assets/**
       - .github/workflows/deploy-demo.yml
   workflow_dispatch:
 
@@ -30,6 +31,7 @@ jobs:
         run: |
           mkdir -p public
           cp elink-retail-admin-demo.html public/index.html
+          cp -R assets public/assets
           touch public/.nojekyll
       - name: Configure Pages
         uses: actions/configure-pages@v5
